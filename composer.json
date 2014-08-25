@@ -1,0 +1,18 @@
+{
+    "name": "easybiblabs/codesniffs",
+    "authors": [
+        {
+            "name": "Anne-Julia Scheuermann",
+            "email": "anne.scheuermann@imagineeasy.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {"Test\\": "src/"},
+      "classmap": [
+        "CodeSniffer/Standards/EasyBib/Sniffs/"
+      ]
+    },
+    "require": {
+      "squizlabs/php_codesniffer": "~1.5"
+    }
+}
