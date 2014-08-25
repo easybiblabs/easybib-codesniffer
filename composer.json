@@ -1,5 +1,5 @@
 {
-    "name": "easybiblabs/codesniffer",
+    "name": "easybib/codesniffer",
     "description": "Adding some sniffs to the general set of codesniffer rules.",
     "license": "MIT",
     "authors": [
