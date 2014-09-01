@@ -37,10 +37,20 @@ class EasyBib_Sniffs_Commenting_CommentPublicApiSniff implements PHP_CodeSniffer
 
 
             if ($tokens[$stackPtr + 2]['type'] == 'T_FUNCTION' || $tokens[$stackPtr + 3]['type'] == 'T_FUNCTION') {
+                $functionName = $tokens[$stackPtr + 4]['content'];
+                // exclude test methods
+                $testMethods = ['test', 'setUp', 'tearDown'];
+                foreach ($testMethods as $testMedName) {
+                    if (strpos($functionName, $testMedName) === 0) {
+                        return;
+                    }
+                }
+
                 $phpcsFile->addWarning(
-                    sprintf('Public method %s should have a docblock', $tokens[$stackPtr + 4]['content']),
+                    sprintf('Public method %s should have a docblock', $functionName),
                     $stackPtr
                 );
+                return;
             }
 
             if ($tokens[$stackPtr + 2]['type'] == 'T_VARIABLE' || $tokens[$stackPtr + 3]['type'] == 'T_VARIABLE') {
