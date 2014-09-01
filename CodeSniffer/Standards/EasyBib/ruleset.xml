@@ -8,11 +8,14 @@
     <rule ref="Generic.CodeAnalysis"/>
     <rule ref="Generic.Commenting"/>
     <rule ref="Generic.PHP.NoSilencedErrors"/>
+    <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
+    <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
 
     <rule ref="Squiz.Commenting.EmptyCatchComment"/>
-    <rule ref="Squiz.Objects.ObjectInstantiation"/>
-    <rule ref="Squiz.PHP.CommentedOutCode"/>
     <rule ref="Squiz.PHP.Eval"/>
     <rule ref="Squiz.PHP.NonExecutableCode"/>
+    <rule ref="Squiz.Scope.MemberVarScope"/>
+    <rule ref="Squiz.Scope.MethodScope"/>
+    <rule ref="Squiz.Scope.StaticThisUsage"/>
 
 </ruleset>
