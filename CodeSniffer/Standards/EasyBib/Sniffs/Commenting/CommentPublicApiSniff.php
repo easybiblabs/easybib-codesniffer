@@ -46,12 +46,11 @@ class EasyBib_Sniffs_Commenting_CommentPublicApiSniff implements PHP_CodeSniffer
                     }
                 }
 
-                
-                
                 $phpcsFile->addWarning(
                     sprintf('Public method %s should have a docblock', $functionName),
                     $stackPtr
                 );
+                return;
             }
 
             if ($tokens[$stackPtr + 2]['type'] == 'T_VARIABLE' || $tokens[$stackPtr + 3]['type'] == 'T_VARIABLE') {
