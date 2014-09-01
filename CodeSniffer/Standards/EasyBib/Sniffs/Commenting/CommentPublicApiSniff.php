@@ -21,7 +21,7 @@ class EasyBib_Sniffs_Commenting_CommentPublicApiSniff implements PHP_CodeSniffer
     public function register()
     {
         return array(
-            T_STRING,
+            T_PUBLIC,
         );
     }
 
@@ -32,8 +32,24 @@ class EasyBib_Sniffs_Commenting_CommentPublicApiSniff implements PHP_CodeSniffer
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        if ($tokens[$stackPtr]['content'] == 'var_dump') {
-            $phpcsFile->addError('Found var_dump', $stackPtr);
+
+        if ($tokens[$stackPtr - 3]['type'] !== 'T_DOC_COMMENT') {
+
+
+            if ($tokens[$stackPtr + 2]['type'] == 'T_FUNCTION' || $tokens[$stackPtr + 3]['type'] == 'T_FUNCTION') {
+                $phpcsFile->addWarning(
+                    sprintf('Public method %s should have a docblock', $tokens[$stackPtr + 4]['content']),
+                    $stackPtr
+                );
+            }
+
+            if ($tokens[$stackPtr + 2]['type'] == 'T_VARIABLE' || $tokens[$stackPtr + 3]['type'] == 'T_VARIABLE') {
+                $phpcsFile->addWarning(
+                    sprintf('Public variable %s should have a docblock', $tokens[$stackPtr + 2]['content']),
+                    $stackPtr
+                );
+            }
+
         }
     }
 }
