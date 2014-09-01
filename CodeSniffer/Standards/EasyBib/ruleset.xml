@@ -5,7 +5,6 @@
     <!-- Include the whole PSR-2 standard -->
     <rule ref="PSR2"/>
 
-    <rule ref="Generic.CodeAnalysis"/>
     <rule ref="Generic.Commenting"/>
     <rule ref="Generic.PHP.NoSilencedErrors"/>
     <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
