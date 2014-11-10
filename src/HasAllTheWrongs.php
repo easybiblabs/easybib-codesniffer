@@ -93,7 +93,7 @@ class HasAllTheWrongs
     }
 
     /**
-     * Empty shows is hard to get always right
+     * Empty shows it's hard to get always right
      */
     public function useEmpty()
     {
