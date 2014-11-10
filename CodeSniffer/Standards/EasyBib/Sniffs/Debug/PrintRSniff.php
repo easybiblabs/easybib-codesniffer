@@ -33,7 +33,7 @@ class EasyBib_Sniffs_Debug_PrintRSniff implements PHP_CodeSniffer_Sniff
     {
         $tokens = $phpcsFile->getTokens();
         if ($tokens[$stackPtr]['content'] == 'print_r') {
-            $phpcsFile->addError('Found print_r', $stackPtr);
+            $phpcsFile->addError('Found print_r()', $stackPtr);
         }
     }
 }

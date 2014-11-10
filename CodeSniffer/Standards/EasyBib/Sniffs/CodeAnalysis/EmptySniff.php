@@ -9,17 +9,20 @@
  */
 
 /**
- * Class EasyBib_Sniffs_Debug_DieSniff
+ * Class EasyBib_Sniffs_Debug_PrintRSniff
  */
-class EasyBib_Sniffs_Debug_DieSniff implements PHP_CodeSniffer_Sniff
+class EasyBib_Sniffs_CodeAnalysis_EmptySniff implements PHP_CodeSniffer_Sniff
 {
+
     /**
      * @return int[]
      * @see    Tokens.php
      */
     public function register()
     {
-        return array(T_EXIT);
+        return array(
+            T_EMPTY,
+        );
     }
 
     /**
@@ -28,10 +31,6 @@ class EasyBib_Sniffs_Debug_DieSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        if ($tokens[$stackPtr]['content'] == 'die') {
-            $phpcsFile->addError('Found die()', $stackPtr);
-        }
+        $phpcsFile->addWarning('Use of empty() is discouraged', $stackPtr);
     }
 }

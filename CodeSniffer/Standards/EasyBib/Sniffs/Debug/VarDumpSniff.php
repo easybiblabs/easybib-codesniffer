@@ -34,7 +34,7 @@ class EasyBib_Sniffs_Debug_VarDumpSniff implements PHP_CodeSniffer_Sniff
     {
         $tokens = $phpcsFile->getTokens();
         if ($tokens[$stackPtr]['content'] == 'var_dump') {
-            $phpcsFile->addError('Found var_dump', $stackPtr);
+            $phpcsFile->addError('Found var_dump()', $stackPtr);
         }
     }
 }
