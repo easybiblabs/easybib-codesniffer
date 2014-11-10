@@ -33,7 +33,13 @@ class EasyBib_Sniffs_Commenting_CommentPublicApiSniff implements PHP_CodeSniffer
     {
         $tokens = $phpcsFile->getTokens();
 
-        if ($tokens[$stackPtr - 3]['type'] !== 'T_DOC_COMMENT') {
+        $commentStackPointer = 3;
+
+        if ($tokens[$stackPtr-2]['type'] == 'T_ABSTRACT') {
+            $commentStackPointer += 2;
+        }
+
+        if ($tokens[$stackPtr - $commentStackPointer]['type'] !== 'T_DOC_COMMENT') {
 
 
             if ($tokens[$stackPtr + 2]['type'] == 'T_FUNCTION' || $tokens[$stackPtr + 3]['type'] == 'T_FUNCTION') {
@@ -59,7 +65,6 @@ class EasyBib_Sniffs_Commenting_CommentPublicApiSniff implements PHP_CodeSniffer
                     $stackPtr
                 );
             }
-
         }
     }
 }
